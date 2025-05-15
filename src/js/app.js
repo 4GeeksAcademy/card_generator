@@ -57,7 +57,13 @@ function render(variables = {}) {
   if (variables.instagram == null)
     instagram = "https://instagram.com/4geeksacademy";
 
-  let socialMediaPosition;
+  let socialMedia = variables.socialMediaPosition;
+  if (variables.socialMediaPosition == "Left") {
+    socialMedia = "position-left";
+  } else {
+    socialMedia = "position-right";
+  }
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
@@ -65,7 +71,7 @@ function render(variables = {}) {
           <h1>${name} ${lastName}</h1>
           <h2>${role}</h2>
           <h3>${city}, ${country}</h3>
-          <ul class="position-right">
+          <ul class="${variables.socialMediaPosition}">
             <li><a href=${twitter}><i class="fab fa-twitter"></i></a></li>
             <li><a href=${github}><i class="fab fa-github"></i></a></li>
             <li><a href=${linkedin}><i class="fab fa-linkedin"></i></a></li>
